@@ -55,7 +55,6 @@ Item Character::removeInventoryItem(int slot) {
 
 //Getter und Setter
 
-
 std::string Character::getName() const {
     return name;
 }
