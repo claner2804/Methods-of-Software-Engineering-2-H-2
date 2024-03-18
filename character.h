@@ -3,7 +3,6 @@
 #define CHARACTER_H
 
 #include "item.h"
-#include "hero.h"
 #include <string>
 #include <vector>
 

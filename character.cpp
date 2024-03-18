@@ -13,7 +13,7 @@ Character::~Character() {}
 
 //Methoden
 
-void Character::attack(Character &target) {
+void Character::attack(Character& target) {
     int damage = rand() % 11 + 5;
     //von Lebenspunkten des Heros abziehen
     target.setHealth(target.getHealth() - damage);

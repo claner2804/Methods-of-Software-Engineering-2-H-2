@@ -18,17 +18,11 @@ int main() {
     enemy2.addInventoryItem(shield);
 
     if (hero.fight(enemy1)) {
-        std::cout << "Annina hat noch " << hero.getHealth() << " Lebenspunkte uebrig." << std::endl;
-        Item loot("Der Eine Ring", 10);
-        hero.addInventoryItem(loot);
-        std::cout << "Neuer Gegenstand im Inventar." << std::endl;
+        std::cout << "Der Held hat gegen " << enemy1.getName() << " gewonnen!" << std::endl;
     }
 
     if (hero.fight(enemy2)) {
-        std::cout << "Annina hat noch " << hero.getHealth() << " Lebenspunkte uebrig." << std::endl;
-        Item loot("Zauberstab", 100);
-        hero.addInventoryItem(loot);
-        std::cout << "Neuer Gegenstand im Inventar." << std::endl;
+        std::cout << "Der Held hat gegen " << enemy2.getName() << " gewonnen!" << std::endl;
     }
 
     for (std::vector<Item>::size_type i = 0; i < hero.equipment.size(); i++) {
