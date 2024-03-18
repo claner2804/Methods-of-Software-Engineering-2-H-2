@@ -1,0 +1,12 @@
+cmake_minimum_required(VERSION 3.27)
+project(Hw1)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(Hw1 main.cpp
+        hero.h
+        character.h
+        item.h
+        hero.cpp
+        character.cpp
+        item.cpp)
