@@ -12,17 +12,28 @@ int main() {
     Character enemy2("Pascal", 40, 30);
 
 
+    Item sword("Schwert", 100);
+    Item shield("Schild", 50);
+    enemy1.addInventoryItem(sword);
+    enemy2.addInventoryItem(shield);
 
+    if (hero.fight(enemy1)) {
+        std::cout << "Annina hat noch " << hero.getHealth() << " Lebenspunkte uebrig." << std::endl;
+        Item loot("Der Eine Ring", 10);
+        hero.addInventoryItem(loot);
+        std::cout << "Neuer Gegenstand im Inventar." << std::endl;
+    }
 
+    if (hero.fight(enemy2)) {
+        std::cout << "Annina hat noch " << hero.getHealth() << " Lebenspunkte uebrig." << std::endl;
+        Item loot("Zauberstab", 100);
+        hero.addInventoryItem(loot);
+        std::cout << "Neuer Gegenstand im Inventar." << std::endl;
+    }
 
-
-
-
-
-
-
-
-
+    for (std::vector<Item>::size_type i = 0; i < hero.equipment.size(); i++) {
+        hero.sellItem(i);
+    }
 
 
 
