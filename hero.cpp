@@ -23,6 +23,35 @@ int Hero::addEquipmentItem(const Item &item) {
 }
 
 bool Hero::fight(Character &enemy) {
+    while (health > 0 && enemy.getHealth() > 0) {
+        //durch vererbung kann die Methode attack target aus der Basisklasse verwendet werden
+        attack(enemy);
+        if (enemy.getHealth() <= 0) {
+            std::cout << enemy.getName() << " fiel in Ohnmacht!" << std::endl;
+            return true;
+        }
+        if (enemy.getInventorySize() >0) {
+            //zufälligen Gegenstand aus dem Inventar des Gegners stehlen
+            int slot = rand() % enemy.getInventorySize();
+            Item stolenItem = enemy.removeInventoryItem(slot);
+            if (addInventoryItem(stolenItem) == -1) {
+                std::cout << "Das Inventar von " << name << " ist voll. Kein Platz mehr vorhanden! Der Gegenstand " << stolenItem.getName()
+                          << " wurde fallen gelassen." << std::endl;
+            } else {
+                std::cout << name << " hat " << stolenItem.getName() << " gestohlen." << std::endl;
+            }
+            //wenn Held gewonnen hat return true
+            return true;
+        }
+
+        //*this weil die Methode attack in der Basisklasse Character ist
+        enemy.attack(*this);
+        if (health <= 0) {
+            std::cout << name << " fiel in Ohnmacht!" << std::endl;
+            return false;
+        }
+    }
+    //wenn der Kampf unentschieden ist
     return false;
 }
 
@@ -38,6 +67,13 @@ void Hero::sellItem(int index) {
 
 //neue Methode
 Item Hero::removeEquipmentItem(int slot) {
+    //wenn der Slot gültig ist, Item entfernen und zurückgeben
+    //static_cast<std::vector<Item>::size_type>(slot) wandelt slot in den Typ size_type um
+    if (slot >= 0 && static_cast<std::vector<Item>::size_type>(slot) < equipment.size()) {
+        Item item = equipment[slot];
+        equipment.erase(equipment.begin() + slot); //Item an der Stelle slot löschen
+        return item;
+    }
     return Item();
 }
 
