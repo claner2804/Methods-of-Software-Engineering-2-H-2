@@ -7,6 +7,11 @@
 
 int main() {
 
+    Hero hero("Annina", 100, 500);
+    Character enemy1("Matthias", 30, 20);
+    Character enemy2("Pascal", 40, 30);
+
+
 
 
 

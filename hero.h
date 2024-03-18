@@ -8,6 +8,8 @@
 #include <vector>
 
 class Hero : public Character {
+
+    public:
     Hero(const std::string& name, int health, int gold);
     ~Hero();
 
