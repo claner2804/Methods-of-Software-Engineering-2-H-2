@@ -13,6 +13,34 @@ void Hero::attack(Character &target) {
     Character::attack(target); //Verwendung der Methode aus der Basisklasse
 }
 
+//neue Methode
+int Hero::addEquipmentItem(const Item &item) {
+    if (equipment.size() < 2) { //Ausrüstung hat nur 2 Plätze
+        equipment.push_back(item); //wenn noch Platz ist, Item hinzufügen
+        return equipment.size() - 1; //Index des hinzugefügten Items
+    }
+    return -1; //Fehler: Ausrüstung voll
+}
+
+bool Hero::fight(Character &enemy) {
+    return false;
+}
+
+void Hero::sellItem(int index) {
+    Item* item = getItem(index);
+    if (item && item->getIsValid()) {
+        gold += item->getValue();
+        std::cout << "Gegenstand " << item->getName() << " wurde verkauft. "
+                  << name << " besitz nun " << gold << " Gold." << std::endl;
+        removeInventoryItem(index);
+    }
+}
+
+//neue Methode
+Item Hero::removeEquipmentItem(int slot) {
+    return Item();
+}
+
 
 
 

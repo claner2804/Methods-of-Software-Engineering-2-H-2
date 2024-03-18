@@ -40,6 +40,7 @@ int Character::addInventoryItem(const Item &item) {
     return -1; //Fehler: Inventar voll
 }
 
+//neue Methode
 Item Character::removeInventoryItem(int slot) {
     if (slot >= 0 && static_cast<std::vector<Item>::size_type>(slot) < inventory.size()) {
         Item item = inventory[slot];
