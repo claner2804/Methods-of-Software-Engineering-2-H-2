@@ -63,6 +63,9 @@ void Hero::sellItem(int index) {
                   << name << " besitz nun " << gold << " Gold." << std::endl;
         removeInventoryItem(index);
     }
+    else {
+        std::cout << "Kein gültiger Gegenstand zum Verkaufen an dieser Stelle." << std::endl;
+    }
 }
 
 //neue Methode
