@@ -71,10 +71,9 @@ void Hero::sellItem(int index) {
 //neue Methode
 Item Hero::removeEquipmentItem(int slot) {
     //wenn der Slot gültig ist, Item entfernen und zurückgeben
-    //static_cast<std::vector<Item>::size_type>(slot) wandelt slot in den Typ size_type um
-    if (slot >= 0 && static_cast<std::vector<Item>::size_type>(slot) < equipment.size()) {
+    if (slot >= 0 && slot < equipment.size()) {
         Item item = equipment[slot];
-        equipment.erase(equipment.begin() + slot); //Item an der Stelle slot löschen
+        equipment.erase(equipment.begin() + slot);
         return item;
     }
     return Item();
