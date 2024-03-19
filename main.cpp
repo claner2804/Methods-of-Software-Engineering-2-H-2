@@ -26,8 +26,10 @@ int main() {
         std::cout << "Gegenstand " << shield.getName() << " wurde zum Inventar der Heldin hinzugefügt." << std::endl;
     }
 
-    for (std::vector<Item>::size_type i = 0; i < hero.equipment.size(); i++) {
-        hero.sellItem(i);
+    for (int i = 0; i < hero.getInventorySize(); i++) {
+        if (hero.getItem(i)->getIsValid()) {
+            hero.sellItem(i);
+        }
     }
 
 
