@@ -15,14 +15,13 @@ int main() {
     Item sword("Schwert", 100);
     Item shield("Schild", 50);
 
-
     if (hero.fight(enemy1)) {
-        enemy1.addInventoryItem(sword);
+        hero.addInventoryItem(sword);
         std::cout << "Gegenstand " << sword.getName() << " wurde zum Inventar der Heldin hinzugefügt." << std::endl;
     }
 
     if (hero.fight(enemy2)) {
-        enemy2.addInventoryItem(shield);
+        hero.addInventoryItem(shield);
         std::cout << "Gegenstand " << shield.getName() << " wurde zum Inventar der Heldin hinzugefügt." << std::endl;
     }
 
