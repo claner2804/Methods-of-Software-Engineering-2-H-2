@@ -56,14 +56,10 @@ bool Hero::fight(Character &enemy) {
 }
 
 void Hero::sellItem(int index) {
-    Item* item = getItem(index);
-    if (item && item->getIsValid()) {
-        gold += item->getValue();
-        std::cout << "Gegenstand " << item->getName() << " wurde verkauft. "
-                  << name << " besitz nun " << gold << " Gold." << std::endl;
-        removeInventoryItem(index);
-    }
-    else {
+    if (index >= 0 && index < inventory.size() && inventory[index].getIsValid()) {
+        std::cout << "Gegenstand " << inventory[index].getName() << " wurde verkauft. " << name << " besitzt nun " << (gold += inventory[index].getValue()) << " Gold." << std::endl;
+        inventory[index].invalidateItem();
+    } else {
         std::cout << "Kein gültiger Gegenstand zum Verkaufen an dieser Stelle." << std::endl;
     }
 }
