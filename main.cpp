@@ -14,15 +14,16 @@ int main() {
 
     Item sword("Schwert", 100);
     Item shield("Schild", 50);
-    enemy1.addInventoryItem(sword);
-    enemy2.addInventoryItem(shield);
+
 
     if (hero.fight(enemy1)) {
-        std::cout << "Der Held hat gegen " << enemy1.getName() << " gewonnen!" << std::endl;
+        enemy1.addInventoryItem(sword);
+        std::cout << "Gegenstand " << sword.getName() << " wurde zum Inventar der Heldin hinzugefügt." << std::endl;
     }
 
     if (hero.fight(enemy2)) {
-        std::cout << "Der Held hat gegen " << enemy2.getName() << " gewonnen!" << std::endl;
+        enemy2.addInventoryItem(shield);
+        std::cout << "Gegenstand " << shield.getName() << " wurde zum Inventar der Heldin hinzugefügt." << std::endl;
     }
 
     for (std::vector<Item>::size_type i = 0; i < hero.equipment.size(); i++) {
